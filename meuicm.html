@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Funções em JavaScript</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    section { margin-bottom: 30px; }
+    label, input, button { display: block; margin: 5px 0; }
+    .resultado { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h1>Testar Funções</h1>
+
+  <!-- IMC -->
+  <section>
+    <h2>IMC</h2>
+    <label>Altura (m): <input type="number" id="alturaIMC" step="0.01" value="1.75"></label>
+    <label>Peso (kg): <input type="number" id="pesoIMC" value="70"></label>
+    <button onclick="executarIMC()">Calcular IMC</button>
+    <div class="resultado" id="resultadoIMC"></div>
+  </section>
+
+  <!-- Fatorial -->
+  <section>
+    <h2>Fatorial</h2>
+    <label>Número: <input type="number" id="numeroFatorial" value="5"></label>
+    <button onclick="executarFatorial()">Calcular Fatorial</button>
+    <div class="resultado" id="resultadoFatorial"></div>
+  </section>
+
+  <!-- Conversão Dólar -->
+  <section>
+    <h2>Conversão de Dólar</h2>
+    <label>Valor em Dólar: <input type="number" id="valorDolar" step="0.01" value="10"></label>
+    <button onclick="executarConversao()">Converter</button>
+    <div class="resultado" id="resultadoDolar"></div>
+  </section>
+
+  <!-- Sala Retangular -->
+  <section>
+    <h2>Sala Retangular</h2>
+    <label>Altura (m): <input type="number" id="alturaRet" step="0.01" value="3"></label>
+    <label>Largura (m): <input type="number" id="larguraRet" step="0.01" value="4"></label>
+    <button onclick="executarSalaRetangular()">Calcular</button>
+    <div class="resultado" id="resultadoRetangular"></div>
+  </section>
+
+  <!-- Sala Circular -->
+  <section>
+    <h2>Sala Circular</h2>
+    <label>Raio (m): <input type="number" id="raioCirc" step="0.01" value="2"></label>
+    <button onclick="executarSalaCircular()">Calcular</button>
+    <div class="resultado" id="resultadoCircular"></div>
+  </section>
+
+  <!-- Tabuada -->
+  <section>
+    <h2>Tabuada</h2>
+    <label>Número: <input type="number" id="numeroTabuada" value="7"></label>
+    <button onclick="executarTabuada()">Mostrar Tabuada</button>
+    <div class="resultado" id="resultadoTabuada"></div>
+  </section>
+
+  <script>
+    function calculaIMC(altura, peso) {
+      let imc = peso / (altura * altura);
+      return imc.toFixed(2);
+    }
+
+    function calcularFatorial(numero) {
+      if (numero === 0 || numero === 1) return 1;
+      let fatorial = 1;
+      for (let i = 2; i <= numero; i++) {
+        fatorial *= i;
+      }
+      return fatorial;
+    }
+
+    function converterDolarParaReal(valorEmDolar) {
+      let cotacaoDolar = 4.80;
+      let valorEmReais = valorEmDolar * cotacaoDolar;
+      return valorEmReais.toFixed(2);
+    }
+
+    function calcularAreaPerimetroSalaRetangular(altura, largura) {
+      let area = altura * largura;
+      let perimetro = 2 * (altura + largura);
+      return {
+        area: area.toFixed(2),
+        perimetro: perimetro.toFixed(2)
+      };
+    }
+
+    function calcularAreaPerimetroSalaCircular(raio) {
+      let area = Math.PI * raio * raio;
+      let perimetro = 2 * Math.PI * raio;
+      return {
+        area: area.toFixed(2),
+        perimetro: perimetro.toFixed(2)
+      };
+    }
+
+    function mostrarTabuada(numero) {
+      let tabuada = '';
+      for (let i = 1; i <= 10; i++) {
+        let resultado = numero * i;
+        tabuada += `${numero} x ${i} = ${resultado}<br>`;
+      }
+      return tabuada;
+    }
+
+    function executarIMC() {
+      const altura = parseFloat(document.getElementById("alturaIMC").value);
+      const peso = parseFloat(document.getElementById("pesoIMC").value);
+      const imc = calculaIMC(altura, peso);
+      document.getElementById("resultadoIMC").textContent = `IMC: ${imc}`;
+    }
+
+    function executarFatorial() {
+      const numero = parseInt(document.getElementById("numeroFatorial").value);
+      const resultado = calcularFatorial(numero);
+      document.getElementById("resultadoFatorial").textContent = `Fatorial de ${numero}: ${resultado}`;
+    }
+
+    function executarConversao() {
+      const valor = parseFloat(document.getElementById("valorDolar").value);
+      const convertido = converterDolarParaReal(valor);
+      document.getElementById("resultadoDolar").textContent = `Valor em reais: R$ ${convertido}`;
+    }
+
+    function executarSalaRetangular() {
+      const altura = parseFloat(document.getElementById("alturaRet").value);
+      const largura = parseFloat(document.getElementById("larguraRet").value);
+      const { area, perimetro } = calcularAreaPerimetroSalaRetangular(altura, largura);
+      document.getElementById("resultadoRetangular").textContent =
+        `Área: ${area} m² | Perímetro: ${perimetro} m`;
+    }
+
+    function executarSalaCircular() {
+      const raio = parseFloat(document.getElementById("raioCirc").value);
+      const { area, perimetro } = calcularAreaPerimetroSalaCircular(raio);
+      document.getElementById("resultadoCircular").textContent =
+        `Área: ${area} m² | Perímetro: ${perimetro} m`;
+    }
+
+    function executarTabuada() {
+      const numero = parseInt(document.getElementById("numeroTabuada").value);
+      const tabuada = mostrarTabuada(numero);
+      document.getElementById("resultadoTabuada").innerHTML = tabuada;
+    }
+  </script>
+</body>
+</html>

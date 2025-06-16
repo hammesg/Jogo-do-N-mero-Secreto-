@@ -1,0 +1,71 @@
+:root {
+  --azul-claro: #279EFF;
+  --azul-escuro: #0C356A;
+  --azul-botao: #3498db;
+  --azul-botao-hover: #2980b9;
+  --texto-branco: #ffffff;
+  --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: var(--fonte-principal);
+  background-color: var(--azul-escuro);
+  color: var(--texto-branco);
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 30px 10px 10px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: var(--azul-claro);
+}
+
+/* Main */
+main.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Botões */
+.button {
+  padding: 12px 24px;
+  margin: 12px;
+  font-size: 1.2rem;
+  background-color: var(--azul-botao);
+  color: var(--texto-branco);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--azul-botao-hover);
+  transform: scale(1.05);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .button {
+    width: 90%;
+    font-size: 1rem;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+}

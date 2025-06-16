@@ -1,0 +1,25 @@
+header {
+    background-color: #4bb3fdff;
+    color: black;
+}
+
+p {
+    color: black;
+}
+
+footer {
+    background-color: #3e6680ff;
+    color: white;
+}
+
+body {
+    background-color: #00487cff;;
+    color: white;
+}
+
+body a {
+    color: white;
+}
+ strong{
+   color: #fd2264;
+ }
